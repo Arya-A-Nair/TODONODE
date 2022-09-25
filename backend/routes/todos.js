@@ -4,17 +4,15 @@ let data=require('../data')
 
 
 router.get('/',(req,res)=>{
-    console.log(data)
     res.json(data)
 })
 
 router.post('/add',(req,res)=>{
-    console.log(req.body)
     data.push({
         name:req.body["name"],
         id:new Date().toISOString()
     })
-    res.send({success:true})
+    res.send(data)
 })
 
 
@@ -23,7 +21,6 @@ router.delete('/delete/:id',(req,res)=>{
     let newData=data.filter((product)=>{
         product.id!==id
     })
-    console.log(newData)
     data=newData
     res.send({success:true})
 })
